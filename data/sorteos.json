@@ -1,0 +1,24 @@
+{
+	"sorteos": [
+		{
+			"id": "sorteo_001",
+			"nombre": "Sorteo del Café",
+			"fecha": "2026-05-15",
+			"valor_billete": 50000,
+			"num_fracciones": 4,
+			"total_billetes": 100,
+			"estado": "pendiente",
+			"premios": [
+				{
+					"nombre": "Premio Mayor",
+					"valor": 1000000
+				},
+				{
+					"nombre": "Seco 1",
+					"valor": 200000
+				}
+			],
+			"ganadores": []
+		}
+	]
+}
