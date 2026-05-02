@@ -16,8 +16,8 @@ defmodule AzarSa.Storage do
         #Se utiliza la librería JASON para decodificar convertir el archivo en un mapa.
         Jason.decode!(contenido_texto)
 
-      {:error, razon} ->
-        IO.puts("Se presento un error al leer el archivo JSON: #{razon}")
+      {:error, _razon} ->
+        #IO.puts("Se presento un error al leer el archivo JSON: #{razon}")
         # Se devuelve la lista vacía.
         []
     end
@@ -40,12 +40,12 @@ defmodule AzarSa.Storage do
     #Se procede a escribir en el archivo JSON y se evalúa si fue exitoso o no
     case File.write(ruta, texto_json) do
       :ok ->
-        IO.puts("El archivo '#{ruta}' se creó de forma correcta.")
+        #IO.puts("El archivo '#{ruta}' se creó de forma correcta.")
         :ok
 
       {:error, razon} ->
-        IO.puts("Se presentó un error al crear el archivo '#{ruta}': #{razon}")
         {:error, razon}
+        #IO.puts("Se presentó un error al crear el archivo '#{ruta}': #{razon}")
     end
 
   end

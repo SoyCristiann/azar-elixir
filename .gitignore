@@ -22,3 +22,10 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 azar_sa-*.tar
 
+# Editores
+.idea/
+.elixir_ls/
+
+# Archivos temporales de pruebas
+data/dummy_sorteos.json
+
