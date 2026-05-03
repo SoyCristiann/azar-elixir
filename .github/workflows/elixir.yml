@@ -1,35 +1,34 @@
 name: Elixir CI - AzarSa
 
-# ¿Cuándo se ejecuta? 
 on:
   push:
-    branches: [ "main", "develop" ] # Se dispara al subir cambios a estas ramas
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ "main", "develop" ] # Se dispara al proponer cambios
+    branches: [ "main", "develop" ]
 
 jobs:
   build_and_test:
     name: Compilación y Pruebas
-    runs-on: ubuntu-latest # Usamos un servidor Linux limpio en la nube
+    runs-on: ubuntu-latest
     
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-	
+
     steps:
     - name: Descargar código
-      uses: actions/checkout@v4 # "Clona" el repo en el servidor de GitHub
+      uses: actions/checkout@v4
 
     - name: Configurar Elixir y Erlang
       uses: erlef/setup-beam@v1
       with:
-        elixir-version: '1.19.0' # Versión definida en mix.exs
+        elixir-version: '1.19.0' # Versión de mix.exs
         otp-version: '26.0'
 
     - name: Instalar Dependencias
       run: |
         mix local.rebar --force
         mix local.hex --force
-        mix deps.get # Instala Jason y lo necesario
+        mix deps.get
 
     - name: Ejecutar Tests de Calidad
-      run: mix test # Ejecuta las pruebas actuales
+      run: mix test # Aquí se ejecutan las pruebas
