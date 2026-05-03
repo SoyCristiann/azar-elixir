@@ -11,12 +11,9 @@ jobs:
     name: Compilación y Pruebas
     runs-on: ubuntu-latest
     
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
     steps:
     - name: Descargar código
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5 # Actualizado a v5 para soporte nativo de Node 24
 
     - name: Configurar Elixir y Erlang
       uses: erlef/setup-beam@v1
@@ -31,4 +28,4 @@ jobs:
         mix deps.get
 
     - name: Ejecutar Tests de Calidad
-      run: mix test # Aquí se ejecutan las pruebas
+      run: mix test
