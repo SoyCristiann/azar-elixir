@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v4 # "Clona" el repo en el servidor de GitHub
 
     - name: Configurar Elixir y Erlang
-      uses: erlang/setup-elixir@v1.17
+      uses: erlang/setup-beam@v1
       with:
         elixir-version: '1.19.0' # Versión definida en mix.exs
         otp-version: '26.0'
