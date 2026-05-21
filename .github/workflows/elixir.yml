@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Clean build
+      run: mix clean
+
     - name: Descargar código
       uses: actions/checkout@v5 # Actualizado a v5 para soporte nativo de Node 24
 
