@@ -42,10 +42,10 @@ config :esbuild,
 config :tailwind,
   version: "4.1.12",
   azar_elixir: [
-    args: ~w(
-      --input=assets/css/app.css
-      --output=priv/static/assets/css/app.css
-    ),
+    args: [
+      "--input=assets/css/app.css",
+      "--output=priv/static/assets/css/app.css"
+    ],
     cd: Path.expand("..", __DIR__)
   ]
 
