@@ -12,9 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Clean build
-      run: mix clean
-
     - name: Descargar código
       uses: actions/checkout@v5 # Actualizado a v5 para soporte nativo de Node 24
 
@@ -29,6 +26,9 @@ jobs:
         mix local.rebar --force
         mix local.hex --force
         mix deps.get
+
+    - name: Compilar Proyecto
+      run: mix compile --warnings-as-errors
 
     - name: Ejecutar Tests de Calidad
       run: mix test
