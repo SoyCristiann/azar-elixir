@@ -1,2 +1,0 @@
-20/05/2026 21:43:24 - Solicitud: Compra billete 001 - Resultado: Aprobado
-20/05/2026 21:43:24 - Solicitud: Consulta saldo - Resultado: Exitoso
