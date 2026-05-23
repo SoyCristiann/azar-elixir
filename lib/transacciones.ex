@@ -7,13 +7,17 @@ defmodule AzarSa.Transacciones do
   Filtra los sorteos que no tengan el estado ugado.
   """
   def consultar_sorteos_disponibles(ruta_sorteos \\ @ruta_sorteos) do
-    sorteos = AzarSa.Storage.leer_json(ruta_sorteos)
+  #Se lee el mapa
+  datos = AzarSa.Storage.leer_json(ruta_sorteos)
 
-    # Se hace un filtro para asegurar que el estado no sea jugado
-    Enum.filter(sorteos, fn sorteo ->
-      Map.get(sorteo, "estado", "activo") != "jugado"
-    end)
-  end
+  #Se extrae la lista usando Map.get con un valor por defecto (lista vacía)
+  sorteos = Map.get(datos, "sorteos", [])
+
+  #Se filtra sobre la lista real.
+  Enum.filter(sorteos, fn sorteo ->
+    Map.get(sorteo, "estado", "activo") != "jugado"
+  end)
+end
 
   @doc """
   Registra la compra de un billete o fracción en el perfil del usuario.
