@@ -1,19 +1,23 @@
 {
-	"usuarios": [
-		{
-			"documento": "123456",
-			"nombre": "Cristian QA",
-			"password": "hashed_password_here",
-			"tarjeta": "4590-XXXX-XXXX-1234",
-			"compras": [
-				{
-					"id_sorteo": "sorteo_001",
-					"numero_billete": 45,
-					"tipo": "completo",
-					"valor_pagado": 50000
-				}
-			],
-			"notificaciones": []
-		}
-	]
+  "documento": "12345",
+  "nombre": "Cristian",
+  "password": "hashed_password_here",
+  "tarjeta": "4590-XXXX-XXXX-1234",
+  "compras": [
+    {
+      "id_sorteo": "S-001",
+      "numero_billete": 45,
+      "tipo": "completo",
+      "valor_pagado": 50000
+    }
+  ],
+  "premios_ganados": [
+    {
+      "id_sorteo": "S-001",
+      "nombre_premio": "Premio Mayor",
+      "valor": 50000,
+      "fecha": "2026-05-22"
+    }
+  ],
+  "notificaciones": []
 }

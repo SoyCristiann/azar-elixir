@@ -1,2 +1,122 @@
 20/05/2026 22:46:23 - Solicitud: Compra billete 1045 en Sorteo sorteo_001 - Resultado: Aprobado
 20/05/2026 22:46:30 - Solicitud: Compra billete 1045 en Sorteo sorteo_001 - Resultado: Negado - Ya vendido
+22/05/2026 16:55:44 - Solicitud: Registro Usuario [987654] - Resultado: NEGADO - Documento duplicado
+22/05/2026 16:55:59 - Solicitud: Registro Usuario [987654] - Resultado: NEGADO - Documento duplicado
+22/05/2026 16:56:16 - Solicitud: Registro Usuario [987654] - Resultado: NEGADO - Documento duplicado
+22/05/2026 16:56:31 - Solicitud: Registro Usuario [9876] - Resultado: OK - Registrado exitosamente
+22/05/2026 16:56:58 - Solicitud: Registro Usuario [9876] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:08:18 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:08:18 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:08:18 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:08:18 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:08:18 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:08:18 - Solicitud: Login [000] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:08:18 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:08:18 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:12:53 - Solicitud: Registro Usuario [12345] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:12:53 - Solicitud: Login [000] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:12:53 - Solicitud: Registro Usuario [888] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:12:53 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:12:53 - Solicitud: Registro Usuario [777] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:12:53 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:12:53 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:12:53 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:13:17 - Solicitud: Login [000] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:13:17 - Solicitud: Registro Usuario [12345] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:13:17 - Solicitud: Registro Usuario [888] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:13:17 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:13:17 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:13:17 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:13:17 - Solicitud: Registro Usuario [777] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:13:17 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:16:31 - Solicitud: Registro Usuario [12345] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:16:31 - Solicitud: Registro Usuario [888] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:16:31 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:16:31 - Solicitud: Login [000] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:16:31 - Solicitud: Registro Usuario [777] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:16:31 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:16:31 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:16:31 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:17:06 - Solicitud: Registro Usuario [888] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:17:06 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:17:06 - Solicitud: Registro Usuario [12345] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:17:07 - Solicitud: Login [000] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:17:07 - Solicitud: Registro Usuario [777] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:17:07 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:17:07 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:17:07 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:18:23 - Solicitud: Registro Usuario [12345] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:18:23 - Solicitud: Registro Usuario [777] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:18:23 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:18:23 - Solicitud: Registro Usuario [888] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:18:23 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:18:23 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:18:23 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:18:23 - Solicitud: Login [000] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:19:44 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:19:44 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:19:44 - Solicitud: Registro Usuario [888] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:19:44 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:19:44 - Solicitud: Login [000] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:19:44 - Solicitud: Registro Usuario [777] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:19:44 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:19:44 - Solicitud: Registro Usuario [12345] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:21:07 - Solicitud: Registro Usuario [888] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:21:07 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:21:07 - Solicitud: Login [000] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:21:07 - Solicitud: Registro Usuario [777] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:21:07 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:21:07 - Solicitud: Registro Usuario [12345] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:21:07 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:21:07 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:22:34 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:22:34 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:22:34 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:22:34 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:22:34 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:22:34 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:22:34 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:23:03 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:23:03 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:23:03 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:23:03 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:23:03 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:23:03 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:23:03 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:27:24 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:27:24 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 17:27:24 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:27:24 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 17:27:24 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 17:27:24 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 17:27:24 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 20:31:45 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 20:31:45 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 20:31:45 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 20:31:45 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 20:31:45 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 20:31:45 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 20:31:45 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 20:31:45 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+22/05/2026 20:31:45 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+22/05/2026 20:31:45 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+22/05/2026 20:34:33 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 20:34:33 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 20:34:33 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 20:34:33 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 20:34:33 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 20:34:33 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 20:34:33 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 20:34:33 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+22/05/2026 20:34:33 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+22/05/2026 20:34:33 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+22/05/2026 21:11:29 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+22/05/2026 21:11:29 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+22/05/2026 21:11:29 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+22/05/2026 21:11:29 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 21:11:29 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 21:11:29 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 21:11:29 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 21:11:29 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 21:11:29 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 21:11:29 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente

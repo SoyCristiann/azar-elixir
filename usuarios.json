@@ -1,0 +1,52 @@
+{
+  "usuarios": [
+    {
+      "compras": [],
+      "documento": "987654",
+      "nombre": "Marisol",
+      "notificaciones": [],
+      "password": "secreta123",
+      "tarjeta": "4590-0000-1111-2222"
+    },
+    {
+      "compras": [],
+      "documento": "9876",
+      "nombre": "Marisol",
+      "notificaciones": [],
+      "password": "secreta123",
+      "tarjeta": "4590-0000-1111-2222"
+    },
+    {
+      "compras": [],
+      "documento": "9999",
+      "nombre": "Original",
+      "notificaciones": [],
+      "password": "pass1",
+      "tarjeta": "0000"
+    },
+    {
+      "compras": [],
+      "documento": "888",
+      "nombre": "Jugador",
+      "notificaciones": [],
+      "password": "correcta",
+      "tarjeta": "4590"
+    },
+    {
+      "compras": [],
+      "documento": "12345",
+      "nombre": "Cristian",
+      "notificaciones": [],
+      "password": "qa_pass",
+      "tarjeta": "1111-2222"
+    },
+    {
+      "compras": [],
+      "documento": "777",
+      "nombre": "Marisol",
+      "notificaciones": [],
+      "password": "secreto",
+      "tarjeta": "4590"
+    }
+  ]
+}

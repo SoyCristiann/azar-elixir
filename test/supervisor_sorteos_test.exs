@@ -1,7 +1,7 @@
 defmodule AzarSa.SupervisorSorteosTest do
   use ExUnit.Case
   alias AzarSa.SupervisorSorteos
-  alias AzarSa.ServidorSorteo
+  #alias AzarSa.ServidorSorteo
 
   test "El supervisor reinicia automáticamente un servidor si este muere" do
     #Se inicia el supervisor
