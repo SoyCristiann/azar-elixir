@@ -18,6 +18,9 @@ defmodule AzarElixirWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/admin", AdminLive
+    live "/jugador", JugadorLive
   end
 
   # Other scopes may use custom stacks.

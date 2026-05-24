@@ -58,14 +58,19 @@ defmodule AzarSa.AdminSorteos do
     datos = Storage.leer_json(ruta)
     sorteos = Map.get(datos, "sorteos", [])
 
-    Enum.sort_by(sorteos, fn sorteo ->
-      # Protección: Si no hay fecha en los datos de prueba, usamos una por defecto
-      fecha_str = Map.get(sorteo, "fecha", "2000-01-01")
-      case Date.from_iso8601(fecha_str) do
-        {:ok, fecha} -> fecha
-        _error -> Date.utc_today()
-      end
-    end, {:desc, Date})
+    Enum.sort_by(
+      sorteos,
+      fn sorteo ->
+        # Protección: Si no hay fecha en los datos de prueba, usamos una por defecto
+        fecha_str = Map.get(sorteo, "fecha", "2000-01-01")
+
+        case Date.from_iso8601(fecha_str) do
+          {:ok, fecha} -> fecha
+          _error -> Date.utc_today()
+        end
+      end,
+      {:desc, Date}
+    )
   end
 
   def crear_sorteo(nuevo_sorteo, ruta \\ @archivo_sorteos) do
@@ -76,7 +81,6 @@ defmodule AzarSa.AdminSorteos do
     else
       sorteos_actualizados = [nuevo_sorteo | sorteos_actuales]
 
-      # CORRECCIÓN: Guardar siempre respetando la raíz "sorteos"
       case Storage.guardar_json(ruta, %{"sorteos" => sorteos_actualizados}) do
         :ok -> {:ok, "Sorteo creado exitosamente"}
         error -> error
@@ -96,7 +100,8 @@ defmodule AzarSa.AdminSorteos do
         premios = Map.get(sorteo_encontrado, "premios", [])
 
         if Enum.empty?(premios) do
-          sorteos_actualizados = Enum.reject(sorteos_actuales, fn sorteo -> sorteo["id"] == id_sorteo end)
+          sorteos_actualizados =
+            Enum.reject(sorteos_actuales, fn sorteo -> sorteo["id"] == id_sorteo end)
 
           # CORRECCIÓN: Guardar siempre respetando la raíz "sorteos"
           Storage.guardar_json(ruta, %{"sorteos" => sorteos_actualizados})
@@ -121,7 +126,7 @@ defmodule AzarSa.AdminSorteos do
     data = Storage.leer_json(ruta_usuarios)
     usuarios = Map.get(data, "usuarios", [])
 
-    #Agrupa a los usuarios según el tipo de compra ("completo" o "fraccion")
+    # Agrupa a los usuarios según el tipo de compra ("completo" o "fraccion")
     Enum.reduce(usuarios, %{completos: [], fracciones: []}, fn usuario, acc ->
       compras = Map.get(usuario, "compras", [])
       compras_del_sorteo = Enum.filter(compras, fn c -> c["id_sorteo"] == id_sorteo end)
@@ -129,14 +134,24 @@ defmodule AzarSa.AdminSorteos do
       if Enum.empty?(compras_del_sorteo) do
         acc
       else
-        #Verifica qué tipo de billetes compró este usuario
-        compro_completo? = Enum.any?(compras_del_sorteo, fn c -> Map.get(c, "tipo", "completo") == "completo" end)
-        compro_fraccion? = Enum.any?(compras_del_sorteo, fn c -> Map.get(c, "tipo") == "fraccion" end)
+        # Verifica qué tipo de billetes compró este usuario
+        compro_completo? =
+          Enum.any?(compras_del_sorteo, fn c -> Map.get(c, "tipo", "completo") == "completo" end)
+
+        compro_fraccion? =
+          Enum.any?(compras_del_sorteo, fn c -> Map.get(c, "tipo") == "fraccion" end)
 
         nombre = usuario["nombre"]
 
-        acc_1 = if compro_completo?, do: Map.update!(acc, :completos, fn lista -> [nombre | lista] end), else: acc
-        acc_2 = if compro_fraccion?, do: Map.update!(acc_1, :fracciones, fn lista -> [nombre | lista] end), else: acc_1
+        acc_1 =
+          if compro_completo?,
+            do: Map.update!(acc, :completos, fn lista -> [nombre | lista] end),
+            else: acc
+
+        acc_2 =
+          if compro_fraccion?,
+            do: Map.update!(acc_1, :fracciones, fn lista -> [nombre | lista] end),
+            else: acc_1
 
         acc_2
       end
@@ -145,16 +160,25 @@ defmodule AzarSa.AdminSorteos do
     |> Map.update!(:fracciones, &Enum.uniq/1)
   end
 
-  def balance_sorteo(id_sorteo, ruta_sorteos \\ @archivo_sorteos, ruta_usuarios \\ @archivo_usuarios) do
-    ingresos = consultar_ingresos(id_sorteo, ruta_usuarios)
+  def balance_sorteo(
+        id_sorteo,
+        ruta_sorteos \\ @archivo_sorteos,
+        ruta_usuarios \\ @archivo_usuarios
+      ) do
+    # 1. Obtenemos la lista y buscamos el sorteo primero
     sorteos = listar_sorteos(ruta_sorteos)
     sorteo = Enum.find(sorteos, fn s -> s["id"] == id_sorteo end)
 
     case sorteo do
-      nil -> {:error, "Sorteo no encontrado"}
+      nil ->
+        # Ajuste: El test espera explícitamente {:error, "Sorteo no encontrado"}
+        {:error, "Sorteo no encontrado"}
+
       s ->
+        # 2. Solo calculamos si el sorteo existe
+        ingresos = consultar_ingresos(id_sorteo, ruta_usuarios) || 0
         premios = Map.get(s, "premios", [])
-        total_premios = Enum.reduce(premios, 0, fn p, acum -> acum + p["valor"] end)
+        total_premios = Enum.reduce(premios, 0, fn p, acum -> acum + (p["valor"] || 0) end)
 
         %{
           "id_sorteo" => id_sorteo,
@@ -192,7 +216,12 @@ defmodule AzarSa.AdminSorteos do
     Storage.guardar_json(ruta_sorteos, %{"sorteos" => sorteos_actualizados})
   end
 
-  def eliminar_premio(id_sorteo, nombre_premio, ruta_sorteos \\ @archivo_sorteos, ruta_usuarios \\ @archivo_usuarios) do
+  def eliminar_premio(
+        id_sorteo,
+        nombre_premio,
+        ruta_sorteos \\ @archivo_sorteos,
+        ruta_usuarios \\ @archivo_usuarios
+      ) do
     data_usuarios = Storage.leer_json(ruta_usuarios)
     usuarios = Map.get(data_usuarios, "usuarios", [])
 
@@ -210,7 +239,9 @@ defmodule AzarSa.AdminSorteos do
       sorteos_actualizados =
         Enum.map(sorteos, fn s ->
           if s["id"] == id_sorteo do
-            premios_filtrados = Enum.reject(s["premios"], fn p -> p["nombre"] == nombre_premio end)
+            premios_filtrados =
+              Enum.reject(s["premios"], fn p -> p["nombre"] == nombre_premio end)
+
             Map.put(s, "premios", premios_filtrados)
           else
             s
@@ -223,10 +254,32 @@ defmodule AzarSa.AdminSorteos do
     end
   end
 
-  # ==========================================
-  # MOTOR DE JUEGO: ACTUALIZACIÓN DE FECHA
-  # ==========================================
-  def actualizar_fecha_sistema(nueva_fecha_str, ruta_sorteos \\ @archivo_sorteos, ruta_usuarios \\ @archivo_usuarios) do
+  @doc """
+  Modifica la fecha de ejecución de un sorteo específico.
+  Requisito directo del documento (Modificar fecha de un sorteo).
+  """
+  def modificar_fecha_sorteo(id_sorteo, nueva_fecha, ruta_sorteos \\ @archivo_sorteos) do
+    sorteos = listar_sorteos(ruta_sorteos)
+
+    sorteos_actualizados =
+      Enum.map(sorteos, fn s ->
+        if s["id"] == id_sorteo do
+          Map.put(s, "fecha", nueva_fecha)
+        else
+          s
+        end
+      end)
+
+    # Guardar siempre respetando la raíz "sorteos"
+    Storage.guardar_json(ruta_sorteos, %{"sorteos" => sorteos_actualizados})
+    {:ok, "Fecha modificada exitosamente."}
+  end
+
+  def actualizar_fecha_sistema(
+        nueva_fecha_str,
+        ruta_sorteos \\ @archivo_sorteos,
+        ruta_usuarios \\ @archivo_usuarios
+      ) do
     case Date.from_iso8601(nueva_fecha_str) do
       {:ok, nueva_fecha} ->
         data_sorteos = Storage.leer_json(ruta_sorteos)
@@ -235,30 +288,78 @@ defmodule AzarSa.AdminSorteos do
         data_usuarios = Storage.leer_json(ruta_usuarios)
         usuarios = Map.get(data_usuarios, "usuarios", [])
 
-        {sorteos_a_jugar, sorteos_restantes} = Enum.split_with(sorteos, fn s ->
-          s["estado"] == "pendiente" && tiene_fecha_vencida?(Map.get(s, "fecha", "2000-01-01"), nueva_fecha)
-        end)
+        {sorteos_a_jugar, sorteos_restantes} =
+          Enum.split_with(sorteos, fn s ->
+            s["estado"] == "pendiente" &&
+              tiene_fecha_vencida?(Map.get(s, "fecha", "2000-01-01"), nueva_fecha)
+          end)
 
         if Enum.empty?(sorteos_a_jugar) do
-          {:ok, "Fecha actualizada a #{nueva_fecha_str}. No se encontraron sorteos programados para jugar."}
+          {:ok,
+           "Fecha actualizada a #{nueva_fecha_str}. No se encontraron sorteos programados para jugar."}
         else
           {sorteos_jugados, usuarios_actualizados} =
             Enum.reduce(sorteos_a_jugar, {[], usuarios}, fn sorteo, {sorteos_acc, usuarios_acc} ->
-              {sorteo_actualizado, nuevos_usuarios} = jugar_sorteo(sorteo, usuarios_acc, nueva_fecha_str)
+              {sorteo_actualizado, nuevos_usuarios} =
+                jugar_sorteo(sorteo, usuarios_acc, nueva_fecha_str)
+
               {sorteos_acc ++ [sorteo_actualizado], nuevos_usuarios}
             end)
 
-          data_sorteos_final = Map.put(data_sorteos, "sorteos", sorteos_restantes ++ sorteos_jugados)
+          data_sorteos_final =
+            Map.put(data_sorteos, "sorteos", sorteos_restantes ++ sorteos_jugados)
+
           data_usuarios_final = Map.put(data_usuarios, "usuarios", usuarios_actualizados)
 
           Storage.guardar_json(ruta_sorteos, data_sorteos_final)
           Storage.guardar_json(ruta_usuarios, data_usuarios_final)
 
-          {:ok, "Éxito: Se avanzó la fecha a #{nueva_fecha_str} y se ejecutaron #{length(sorteos_a_jugar)} sorteo(s)."}
+          {:ok,
+           "Éxito: Se avanzó la fecha a #{nueva_fecha_str} y se ejecutaron #{length(sorteos_a_jugar)} sorteo(s)."}
         end
 
       {:error, _reason} ->
-        {:error, "Formato de fecha inválido. Debe utilizar el formato AAAA-MM-DD (Ej: 2026-05-22)."}
+        {:error,
+         "Formato de fecha inválido. Debe utilizar el formato AAAA-MM-DD (Ej: 2026-05-22)."}
+    end
+  end
+
+  @doc "Ejecuta un sorteo individual de forma manual e inmediata"
+  def ejecutar_sorteo_manual(
+        id_sorteo,
+        ruta_sorteos \\ @archivo_sorteos,
+        ruta_usuarios \\ @archivo_usuarios
+      ) do
+    data_sorteos = Storage.leer_json(ruta_sorteos)
+    sorteos = Map.get(data_sorteos, "sorteos", [])
+
+    data_usuarios = Storage.leer_json(ruta_usuarios)
+    usuarios = Map.get(data_usuarios, "usuarios", [])
+
+    case Enum.find(sorteos, fn s -> s["id"] == id_sorteo end) do
+      nil ->
+        {:error, "Sorteo no encontrado"}
+
+      sorteo ->
+        if sorteo["estado"] == "jugado" do
+          {:error, "El sorteo ya fue ejecutado."}
+        else
+          # Usamos la fecha actual como timestamp de ejecución manual
+          fecha_hoy = Date.utc_today() |> Date.to_string()
+
+          # Reutiliza la función privada para sacar ganadores e inyectar notificaciones
+          {sorteo_jugado, usuarios_actualizados} = jugar_sorteo(sorteo, usuarios, fecha_hoy)
+
+          sorteos_actualizados =
+            Enum.map(sorteos, fn s ->
+              if s["id"] == id_sorteo, do: sorteo_jugado, else: s
+            end)
+
+          Storage.guardar_json(ruta_sorteos, %{"sorteos" => sorteos_actualizados})
+          Storage.guardar_json(ruta_usuarios, %{"usuarios" => usuarios_actualizados})
+
+          {:ok, "Sorteo ejecutado con éxito. Ganadores calculados y notificados."}
+        end
     end
   end
 
@@ -271,24 +372,36 @@ defmodule AzarSa.AdminSorteos do
 
   defp jugar_sorteo(sorteo, usuarios, nueva_fecha_str) do
     sorteo_id = sorteo["id"]
-    # Protección si no tiene la llave
     total_billetes = Map.get(sorteo, "total_billetes", 100)
     premios = Map.get(sorteo, "premios", [])
 
-    {ganadores_sorteo, usuarios_actualizados} =
-      Enum.reduce(premios, {[], usuarios}, fn premio, {ganadores_acc, u_acc} ->
+    # Reducimos los premios para obtener ganadores y una lista de números ganadores
+    {ganadores_sorteo, usuarios_actualizados, numeros_ganadores} =
+      Enum.reduce(premios, {[], usuarios, []}, fn premio, {ganadores_acc, u_acc, nums_acc} ->
         numero_ganador = :rand.uniform(total_billetes)
 
         {nuevos_ganadores, usuarios_modificados} =
-          evaluar_compradores(sorteo_id, numero_ganador, premio, nueva_fecha_str, Map.get(sorteo, "nombre", "Sorteo"), u_acc)
+          evaluar_compradores(
+            sorteo_id,
+            numero_ganador,
+            premio,
+            nueva_fecha_str,
+            Map.get(sorteo, "nombre", "Sorteo"),
+            u_acc
+          )
 
-        {ganadores_acc ++ nuevos_ganadores, usuarios_modificados}
+        # Guardamos el número ganador junto con el nombre del premio
+        nuevo_num = %{"premio" => premio["nombre"], "numero" => numero_ganador}
+
+        {ganadores_acc ++ nuevos_ganadores, usuarios_modificados, nums_acc ++ [nuevo_num]}
       end)
 
     sorteo_actualizado =
       sorteo
       |> Map.put("estado", "jugado")
       |> Map.put("ganadores", ganadores_sorteo)
+      # Esto es lo que faltaba guardar
+      |> Map.put("numeros_ganadores", numeros_ganadores)
 
     {sorteo_actualizado, usuarios_actualizados}
   end
@@ -297,9 +410,10 @@ defmodule AzarSa.AdminSorteos do
     Enum.reduce(usuarios, {[], []}, fn usuario, {ganadores_list, usuarios_list} ->
       compras = Map.get(usuario, "compras", [])
 
-      gano? = Enum.any?(compras, fn c ->
-        c["id_sorteo"] == sorteo_id && c["numero_billete"] == numero_ganador
-      end)
+      gano? =
+        Enum.any?(compras, fn c ->
+          c["id_sorteo"] == sorteo_id && c["numero_billete"] == numero_ganador
+        end)
 
       if gano? do
         registro_ganador = %{
@@ -315,7 +429,8 @@ defmodule AzarSa.AdminSorteos do
           "fecha" => fecha_str
         }
 
-        notificacion = "¡Felicidades! Tu número #{numero_ganador} ganó el premio '#{premio["nombre"]}' en el #{nombre_sorteo}."
+        notificacion =
+          "¡Felicidades! Tu número #{numero_ganador} ganó el premio '#{premio["nombre"]}' en el #{nombre_sorteo}."
 
         usuario_actualizado =
           usuario
