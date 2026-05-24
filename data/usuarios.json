@@ -1,23 +1,326 @@
 {
-  "documento": "12345",
-  "nombre": "Cristian",
-  "password": "hashed_password_here",
-  "tarjeta": "4590-XXXX-XXXX-1234",
-  "compras": [
+  "usuarios": [
     {
-      "id_sorteo": "S-001",
-      "numero_billete": 45,
-      "tipo": "completo",
-      "valor_pagado": 50000
-    }
-  ],
-  "premios_ganados": [
+      "documento": "10001",
+      "nombre": "Juan Perez",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_001",
+          "numero_billete": 10,
+          "tipo": "completo",
+          "valor_pagado": 50000
+        }
+      ],
+      "premios_ganados": [],
+      "notificaciones": []
+    },
     {
-      "id_sorteo": "S-001",
-      "nombre_premio": "Premio Mayor",
-      "valor": 50000,
-      "fecha": "2026-05-22"
+      "documento": "10002",
+      "nombre": "Ana Garcia",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_002",
+          "numero_billete": 12,
+          "tipo": "completo",
+          "valor_pagado": 30000
+        }
+      ],
+      "premios_ganados": [
+        {
+          "id_sorteo": "sorteo_002",
+          "nombre_premio": "Gran Premio",
+          "valor": 500000,
+          "fecha": "2026-05-10"
+        }
+      ],
+      "notificaciones": ["Ganaste!"]
+    },
+    {
+      "documento": "10003",
+      "nombre": "Luis Lopez",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_003",
+          "numero_billete": 88,
+          "tipo": "fraccion",
+          "valor_pagado": 20000
+        }
+      ],
+      "premios_ganados": [
+        {
+          "id_sorteo": "sorteo_003",
+          "nombre_premio": "Premio Único",
+          "valor": 100000,
+          "fecha": "2026-04-20"
+        }
+      ],
+      "notificaciones": []
+    },
+    {
+      "documento": "10004",
+      "nombre": "Maria Ruiz",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_001",
+          "numero_billete": 5,
+          "tipo": "fraccion",
+          "valor_pagado": 12500
+        }
+      ],
+      "premios_ganados": [],
+      "notificaciones": []
+    },
+    {
+      "documento": "10005",
+      "nombre": "Carlos Diaz",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_005",
+          "numero_billete": 5,
+          "tipo": "completo",
+          "valor_pagado": 100000
+        }
+      ],
+      "premios_ganados": [
+        {
+          "id_sorteo": "sorteo_005",
+          "nombre_premio": "Millonario",
+          "valor": 5000000,
+          "fecha": "2026-03-15"
+        }
+      ],
+      "notificaciones": []
+    },
+    {
+      "documento": "10006",
+      "nombre": "Elena Gomez",
+      "compras": [],
+      "premios_ganados": [],
+      "notificaciones": []
+    },
+    {
+      "documento": "10007",
+      "nombre": "Pedro Soto",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_007",
+          "numero_billete": 42,
+          "tipo": "completo",
+          "valor_pagado": 40000
+        }
+      ],
+      "premios_ganados": [
+        {
+          "id_sorteo": "sorteo_007",
+          "nombre_premio": "Premio Pico",
+          "valor": 600000,
+          "fecha": "2026-02-20"
+        }
+      ],
+      "notificaciones": []
+    },
+    {
+      "documento": "10008",
+      "nombre": "Sofia Luna",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_001",
+          "numero_billete": 99,
+          "tipo": "completo",
+          "valor_pagado": 50000
+        }
+      ],
+      "premios_ganados": [],
+      "notificaciones": []
+    },
+    {
+      "documento": "10009",
+      "nombre": "Diego Mar",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_009",
+          "numero_billete": 10,
+          "tipo": "fraccion",
+          "valor_pagado": 15000
+        }
+      ],
+      "premios_ganados": [
+        {
+          "id_sorteo": "sorteo_009",
+          "nombre_premio": "Premio Arena",
+          "valor": 50000,
+          "fecha": "2026-01-10"
+        }
+      ],
+      "notificaciones": []
+    },
+    {
+      "documento": "10010",
+      "nombre": "Lucia Sol",
+      "compras": [],
+      "premios_ganados": [],
+      "notificaciones": []
+    },
+    {
+      "documento": "10011",
+      "nombre": "Jorge Rio",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_011",
+          "numero_billete": 22,
+          "tipo": "completo",
+          "valor_pagado": 35000
+        }
+      ],
+      "premios_ganados": [
+        {
+          "id_sorteo": "sorteo_011",
+          "nombre_premio": "Premio Polar",
+          "valor": 400000,
+          "fecha": "2026-01-25"
+        }
+      ],
+      "notificaciones": []
+    },
+    {
+      "documento": "10012",
+      "nombre": "Sara Viento",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_001",
+          "numero_billete": 11,
+          "tipo": "fraccion",
+          "valor_pagado": 12500
+        }
+      ],
+      "premios_ganados": [],
+      "notificaciones": []
+    },
+    {
+      "documento": "10013",
+      "nombre": "Hugo Tierra",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_013",
+          "numero_billete": 1,
+          "tipo": "completo",
+          "valor_pagado": 20000
+        }
+      ],
+      "premios_ganados": [
+        {
+          "id_sorteo": "sorteo_013",
+          "nombre_premio": "Premio Amanecer",
+          "valor": 150000,
+          "fecha": "2026-04-05"
+        }
+      ],
+      "notificaciones": []
+    },
+    {
+      "documento": "10014",
+      "nombre": "Irene Nieve",
+      "compras": [],
+      "premios_ganados": [],
+      "notificaciones": []
+    },
+    {
+      "documento": "10015",
+      "nombre": "Oscar Fuego",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_015",
+          "numero_billete": 77,
+          "tipo": "completo",
+          "valor_pagado": 50000
+        }
+      ],
+      "premios_ganados": [
+        {
+          "id_sorteo": "sorteo_015",
+          "nombre_premio": "Premio Llama",
+          "valor": 700000,
+          "fecha": "2026-03-01"
+        }
+      ],
+      "notificaciones": []
+    },
+    {
+      "documento": "10016",
+      "nombre": "Paula Aire",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_004",
+          "numero_billete": 5,
+          "tipo": "fraccion",
+          "valor_pagado": 15000
+        }
+      ],
+      "premios_ganados": [],
+      "notificaciones": []
+    },
+    {
+      "documento": "10017",
+      "nombre": "Quique Piedra",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_017",
+          "numero_billete": 33,
+          "tipo": "completo",
+          "valor_pagado": 40000
+        }
+      ],
+      "premios_ganados": [
+        {
+          "id_sorteo": "sorteo_017",
+          "nombre_premio": "Premio Raiz",
+          "valor": 550000,
+          "fecha": "2026-02-15"
+        }
+      ],
+      "notificaciones": []
+    },
+    {
+      "documento": "10018",
+      "nombre": "Rita Agua",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_006",
+          "numero_billete": 15,
+          "tipo": "fraccion",
+          "valor_pagado": 12500
+        }
+      ],
+      "premios_ganados": [],
+      "notificaciones": []
+    },
+    {
+      "documento": "10019",
+      "nombre": "Samuel Hierro",
+      "compras": [
+        {
+          "id_sorteo": "sorteo_019",
+          "numero_billete": 50,
+          "tipo": "completo",
+          "valor_pagado": 70000
+        }
+      ],
+      "premios_ganados": [
+        {
+          "id_sorteo": "sorteo_019",
+          "nombre_premio": "Premio Hierro",
+          "valor": 1000000,
+          "fecha": "2026-05-30"
+        }
+      ],
+      "notificaciones": []
+    },
+    {
+      "documento": "10020",
+      "nombre": "Tania Madera",
+      "compras": [],
+      "premios_ganados": [],
+      "notificaciones": []
     }
-  ],
-  "notificaciones": []
+  ]
 }

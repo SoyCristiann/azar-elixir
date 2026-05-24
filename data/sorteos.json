@@ -1,24 +1,384 @@
 {
-	"sorteos": [
-		{
-			"id": "sorteo_001",
-			"nombre": "Sorteo del Café",
-			"fecha": "2026-05-15",
-			"valor_billete": 50000,
-			"num_fracciones": 4,
-			"total_billetes": 100,
-			"estado": "pendiente",
-			"premios": [
-				{
-					"nombre": "Premio Mayor",
-					"valor": 1000000
-				},
-				{
-					"nombre": "Seco 1",
-					"valor": 200000
-				}
-			],
-			"ganadores": []
-		}
-	]
+  "sorteos": [
+    {
+      "id": "sorteo_001",
+      "nombre": "Sorteo del Café",
+      "fecha": "2026-06-15",
+      "valor_billete": 50000,
+      "num_fracciones": 4,
+      "total_billetes": 100,
+      "estado": "pendiente",
+      "premios": [
+        {
+          "nombre": "Premio Mayor",
+          "valor": 1000000
+        }
+      ],
+      "ganadores": []
+    },
+    {
+      "id": "sorteo_002",
+      "nombre": "Sorteo Primavera",
+      "fecha": "2026-05-10",
+      "valor_billete": 30000,
+      "num_fracciones": 2,
+      "total_billetes": 50,
+      "estado": "jugado",
+      "premios": [
+        {
+          "nombre": "Gran Premio",
+          "valor": 500000
+        }
+      ],
+      "ganadores": [
+        {
+          "documento": "10002",
+          "premio": "Gran Premio",
+          "numero": 12
+        }
+      ]
+    },
+    {
+      "id": "sorteo_003",
+      "nombre": "Sorteo Relámpago",
+      "fecha": "2026-04-20",
+      "valor_billete": 20000,
+      "num_fracciones": 1,
+      "total_billetes": 200,
+      "estado": "jugado",
+      "premios": [
+        {
+          "nombre": "Premio Único",
+          "valor": 100000
+        }
+      ],
+      "ganadores": [
+        {
+          "documento": "10003",
+          "premio": "Premio Único",
+          "numero": 88
+        }
+      ]
+    },
+    {
+      "id": "sorteo_004",
+      "nombre": "Sorteo de Verano",
+      "fecha": "2026-07-01",
+      "valor_billete": 45000,
+      "num_fracciones": 3,
+      "total_billetes": 80,
+      "estado": "pendiente",
+      "premios": [
+        {
+          "nombre": "Premio Mayor",
+          "valor": 2000000
+        }
+      ],
+      "ganadores": []
+    },
+    {
+      "id": "sorteo_005",
+      "nombre": "Sorteo Extraordinario",
+      "fecha": "2026-03-15",
+      "valor_billete": 100000,
+      "num_fracciones": 5,
+      "total_billetes": 30,
+      "estado": "jugado",
+      "premios": [
+        {
+          "nombre": "Millonario",
+          "valor": 5000000
+        }
+      ],
+      "ganadores": [
+        {
+          "documento": "10005",
+          "premio": "Millonario",
+          "numero": 5
+        }
+      ]
+    },
+    {
+      "id": "sorteo_006",
+      "nombre": "Sorteo Lunar",
+      "fecha": "2026-08-10",
+      "valor_billete": 25000,
+      "num_fracciones": 2,
+      "total_billetes": 150,
+      "estado": "pendiente",
+      "premios": [
+        {
+          "nombre": "Premio Luna",
+          "valor": 300000
+        }
+      ],
+      "ganadores": []
+    },
+    {
+      "id": "sorteo_007",
+      "nombre": "Sorteo Montaña",
+      "fecha": "2026-02-20",
+      "valor_billete": 40000,
+      "num_fracciones": 4,
+      "total_billetes": 60,
+      "estado": "jugado",
+      "premios": [
+        {
+          "nombre": "Premio Pico",
+          "valor": 600000
+        }
+      ],
+      "ganadores": [
+        {
+          "documento": "10007",
+          "premio": "Premio Pico",
+          "numero": 42
+        }
+      ]
+    },
+    {
+      "id": "sorteo_008",
+      "nombre": "Sorteo Oceano",
+      "fecha": "2026-09-05",
+      "valor_billete": 55000,
+      "num_fracciones": 5,
+      "total_billetes": 40,
+      "estado": "pendiente",
+      "premios": [
+        {
+          "nombre": "Premio Profundo",
+          "valor": 800000
+        }
+      ],
+      "ganadores": []
+    },
+    {
+      "id": "sorteo_009",
+      "nombre": "Sorteo Desierto",
+      "fecha": "2026-01-10",
+      "valor_billete": 15000,
+      "num_fracciones": 1,
+      "total_billetes": 300,
+      "estado": "jugado",
+      "premios": [
+        {
+          "nombre": "Premio Arena",
+          "valor": 50000
+        }
+      ],
+      "ganadores": [
+        {
+          "documento": "10009",
+          "premio": "Premio Arena",
+          "numero": 10
+        }
+      ]
+    },
+    {
+      "id": "sorteo_010",
+      "nombre": "Sorteo Selva",
+      "fecha": "2026-10-12",
+      "valor_billete": 60000,
+      "num_fracciones": 4,
+      "total_billetes": 50,
+      "estado": "pendiente",
+      "premios": [
+        {
+          "nombre": "Premio Jungla",
+          "valor": 900000
+        }
+      ],
+      "ganadores": []
+    },
+    {
+      "id": "sorteo_011",
+      "nombre": "Sorteo Norte",
+      "fecha": "2026-01-25",
+      "valor_billete": 35000,
+      "num_fracciones": 2,
+      "total_billetes": 120,
+      "estado": "jugado",
+      "premios": [
+        {
+          "nombre": "Premio Polar",
+          "valor": 400000
+        }
+      ],
+      "ganadores": [
+        {
+          "documento": "10011",
+          "premio": "Premio Polar",
+          "numero": 22
+        }
+      ]
+    },
+    {
+      "id": "sorteo_012",
+      "nombre": "Sorteo Sur",
+      "fecha": "2026-11-20",
+      "valor_billete": 35000,
+      "num_fracciones": 2,
+      "total_billetes": 120,
+      "estado": "pendiente",
+      "premios": [
+        {
+          "nombre": "Premio Austral",
+          "valor": 400000
+        }
+      ],
+      "ganadores": []
+    },
+    {
+      "id": "sorteo_013",
+      "nombre": "Sorteo Este",
+      "fecha": "2026-04-05",
+      "valor_billete": 20000,
+      "num_fracciones": 1,
+      "total_billetes": 200,
+      "estado": "jugado",
+      "premios": [
+        {
+          "nombre": "Premio Amanecer",
+          "valor": 150000
+        }
+      ],
+      "ganadores": [
+        {
+          "documento": "10013",
+          "premio": "Premio Amanecer",
+          "numero": 1
+        }
+      ]
+    },
+    {
+      "id": "sorteo_014",
+      "nombre": "Sorteo Oeste",
+      "fecha": "2026-12-01",
+      "valor_billete": 20000,
+      "num_fracciones": 1,
+      "total_billetes": 200,
+      "estado": "pendiente",
+      "premios": [
+        {
+          "nombre": "Premio Atardecer",
+          "valor": 150000
+        }
+      ],
+      "ganadores": []
+    },
+    {
+      "id": "sorteo_015",
+      "nombre": "Sorteo Fuego",
+      "fecha": "2026-03-01",
+      "valor_billete": 50000,
+      "num_fracciones": 4,
+      "total_billetes": 90,
+      "estado": "jugado",
+      "premios": [
+        {
+          "nombre": "Premio Llama",
+          "valor": 700000
+        }
+      ],
+      "ganadores": [
+        {
+          "documento": "10015",
+          "premio": "Premio Llama",
+          "numero": 77
+        }
+      ]
+    },
+    {
+      "id": "sorteo_016",
+      "nombre": "Sorteo Aire",
+      "fecha": "2026-06-20",
+      "valor_billete": 45000,
+      "num_fracciones": 3,
+      "total_billetes": 100,
+      "estado": "pendiente",
+      "premios": [
+        {
+          "nombre": "Premio Brisa",
+          "valor": 600000
+        }
+      ],
+      "ganadores": []
+    },
+    {
+      "id": "sorteo_017",
+      "nombre": "Sorteo Tierra",
+      "fecha": "2026-02-15",
+      "valor_billete": 40000,
+      "num_fracciones": 3,
+      "total_billetes": 110,
+      "estado": "jugado",
+      "premios": [
+        {
+          "nombre": "Premio Raiz",
+          "valor": 550000
+        }
+      ],
+      "ganadores": [
+        {
+          "documento": "10017",
+          "premio": "Premio Raiz",
+          "numero": 33
+        }
+      ]
+    },
+    {
+      "id": "sorteo_018",
+      "nombre": "Sorteo Agua",
+      "fecha": "2026-07-25",
+      "valor_billete": 40000,
+      "num_fracciones": 3,
+      "total_billetes": 110,
+      "estado": "pendiente",
+      "premios": [
+        {
+          "nombre": "Premio Ola",
+          "valor": 550000
+        }
+      ],
+      "ganadores": []
+    },
+    {
+      "id": "sorteo_019",
+      "nombre": "Sorteo Metal",
+      "fecha": "2026-05-30",
+      "valor_billete": 70000,
+      "num_fracciones": 5,
+      "total_billetes": 40,
+      "estado": "jugado",
+      "premios": [
+        {
+          "nombre": "Premio Hierro",
+          "valor": 1000000
+        }
+      ],
+      "ganadores": [
+        {
+          "documento": "10019",
+          "premio": "Premio Hierro",
+          "numero": 50
+        }
+      ]
+    },
+    {
+      "id": "sorteo_020",
+      "nombre": "Sorteo Madera",
+      "fecha": "2026-08-30",
+      "valor_billete": 70000,
+      "num_fracciones": 5,
+      "total_billetes": 40,
+      "estado": "pendiente",
+      "premios": [
+        {
+          "nombre": "Premio Roble",
+          "valor": 1000000
+        }
+      ],
+      "ganadores": []
+    }
+  ]
 }

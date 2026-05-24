@@ -3,20 +3,18 @@ defmodule AzarSa.Logger do
   Módulo encargado de registrar los eventos y operaciones del sistema en una bitácora física y en la consola.
   """
 
-  @doc """
-  Registra una operación en la ruta específicada (por defecto 'data/bitacora.txt') y la muestra en consola.
-  Retorna :ok o {:error, razon} enc aso de fallo.
-  """
-
   def registrar_log(solicitud, resultado, ruta \\ "data/bitacora.txt") do
     fecha_hora = obtener_fecha_hora()
-    # Línea que se utilizará para insertar en la bitácora y mostrar en la consola.
     linea = "#{fecha_hora} - Solicitud: #{solicitud} - Resultado: #{resultado}\n"
 
-    # Se muestra en la pantalla
+    #Mostrar en consola
     IO.puts("LOG: #{String.trim(linea)}")
 
-    # Se guarda en el archivo físico
+    #Asegurar que el directorio exista antes de escribir
+    directorio = Path.dirname(ruta)
+    File.mkdir_p!(directorio)
+
+    #Guardar en el archivo
     case File.write(ruta, linea, [:append]) do
       :ok ->
         :ok
@@ -27,18 +25,10 @@ defmodule AzarSa.Logger do
     end
   end
 
-  # Función para formatear la fecha y hora actual en un formato legible. Solo se utilizará en este módulo.
   defp obtener_fecha_hora do
     {{y, m, d}, {h, min, seg}} = :calendar.local_time()
-    # Aseguramos ceros a la izquierda para que se vea ordenado (ej: 05/09/2026 08:05:01)
-    fecha = "#{pad(d)}/#{pad(m)}/#{y}"
-    hora = "#{pad(h)}:#{pad(min)}:#{pad(seg)}"
-    "#{fecha} #{hora}"
+    "#{pad(d)}/#{pad(m)}/#{y} #{pad(h)}:#{pad(min)}:#{pad(seg)}"
   end
 
-  defp pad(numero) do
-    numero
-    |> Integer.to_string()
-    |> String.pad_leading(2, "0")
-  end
+  defp pad(n), do: n |> Integer.to_string() |> String.pad_leading(2, "0")
 end

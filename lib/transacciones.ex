@@ -7,13 +7,14 @@ defmodule AzarSa.Transacciones do
   Filtra los sorteos que no tengan el estado ugado.
   """
   def consultar_sorteos_disponibles(ruta_sorteos \\ @ruta_sorteos) do
-  #Se lee el mapa
   datos = AzarSa.Storage.leer_json(ruta_sorteos)
+  #Si es mapa, busca la llave "sorteos". Si es lista, úsala directamente (para test ok).
+  sorteos = case datos do
+    %{"sorteos" => lista} -> lista
+    lista when is_list(lista) -> lista
+    _ -> []
+  end
 
-  #Se extrae la lista usando Map.get con un valor por defecto (lista vacía)
-  sorteos = Map.get(datos, "sorteos", [])
-
-  #Se filtra sobre la lista real.
   Enum.filter(sorteos, fn sorteo ->
     Map.get(sorteo, "estado", "activo") != "jugado"
   end)
@@ -21,7 +22,7 @@ end
 
   @doc """
   Registra la compra de un billete o fracción en el perfil del usuario.
-  Valida que el sorteo esté disponible antes de procesar la transacción.
+  Valida que el sorteo esté disponible y que el número tenga inventario.
   """
   def comprar_billete(documento, id_sorteo, numero, tipo, valor_pagado, ruta_usuarios \\ @ruta_usuarios, ruta_sorteos \\ @ruta_sorteos) do
     #Validar que el sorteo esté disponible para la venta
@@ -32,37 +33,50 @@ end
       AzarSa.Logger.registrar_log("Compra [#{documento}]", "NEGADO - Sorteo #{id_sorteo} no disponible")
       {:error, "El sorteo no está disponible o ya fue jugado."}
     else
-      # Se cargan los datos de los usuarios
-      datos_usuarios = AzarSa.Storage.leer_json(ruta_usuarios)
-      usuarios = Map.get(datos_usuarios, "usuarios", [])
+      #Valida sobre venta y disponibilidad del número
+      case AzarSa.Jugador.consultar_numeros_disponibles(id_sorteo, ruta_sorteos, ruta_usuarios) do
+        {:ok, disponibles} ->
+          puede_comprar? =
+            if tipo == "completo" do
+              Enum.member?(disponibles.billetes_completos, numero)
+            else
+              Enum.member?(disponibles.fracciones, numero)
+            end
 
-      #Busca al usuario específico por su documento y obtiene su índice en la lista de usuarios.
-      index_usuario = Enum.find_index(usuarios, fn u -> u["documento"] == documento end)
+          if not puede_comprar? do
+            AzarSa.Logger.registrar_log("Compra [#{documento}]", "NEGADO - Billete #{numero} (#{tipo}) agotado")
+            {:error, "El número #{numero} no está disponible para compra como #{tipo}."}
+          else
+            #Procede con la transacción: registra la compra en el perfil del usuario y actualiza el inventario del sorteo
+            datos_usuarios = AzarSa.Storage.leer_json(ruta_usuarios)
+            usuarios = Map.get(datos_usuarios, "usuarios", [])
+            index_usuario = Enum.find_index(usuarios, fn u -> u["documento"] == documento end)
 
-      if index_usuario do
-        #Crea la transacción
-        nueva_compra = %{
-          "id_sorteo" => id_sorteo,
-          "numero_billete" => numero,
-          "tipo" => tipo, # "completo" o "fraccion"
-          "valor_pagado" => valor_pagado
-        }
+            if index_usuario do
+              nueva_compra = %{
+                "id_sorteo" => id_sorteo,
+                "numero_billete" => numero,
+                "tipo" => tipo,
+                "valor_pagado" => valor_pagado
+              }
 
-        #Actualiza la lista de compras del usuario
-        usuario_actual = Enum.at(usuarios, index_usuario)
-        compras_actualizadas = usuario_actual["compras"] ++ [nueva_compra]
-        usuario_actualizado = Map.put(usuario_actual, "compras", compras_actualizadas)
+              usuario_actual = Enum.at(usuarios, index_usuario)
+              compras_actualizadas = usuario_actual["compras"] ++ [nueva_compra]
+              usuario_actualizado = Map.put(usuario_actual, "compras", compras_actualizadas)
+              usuarios_nuevos = List.replace_at(usuarios, index_usuario, usuario_actualizado)
 
-        usuarios_nuevos = List.replace_at(usuarios, index_usuario, usuario_actualizado)
+              AzarSa.Storage.guardar_json(ruta_usuarios, %{"usuarios" => usuarios_nuevos})
+              AzarSa.Logger.registrar_log("Compra [#{documento}]", "OK - Sorteo: #{id_sorteo} | Num: #{numero} | Tipo: #{tipo}")
 
-        #Guardar y registra el log
-        AzarSa.Storage.guardar_json(ruta_usuarios, %{"usuarios" => usuarios_nuevos})
-        AzarSa.Logger.registrar_log("Compra [#{documento}]", "OK - Sorteo: #{id_sorteo} | Num: #{numero} | Tipo: #{tipo}")
+              {:ok, nueva_compra}
+            else
+              AzarSa.Logger.registrar_log("Compra [#{documento}]", "NEGADO - Usuario no existe")
+              {:error, "No se encontró un usuario con el documento proporcionado."}
+            end
+          end
 
-        {:ok, nueva_compra}
-      else
-        AzarSa.Logger.registrar_log("Compra [#{documento}]", "NEGADO - Usuario no existe")
-        {:error, "No se encontró un usuario con el documento proporcionado."}
+        {:error, razon} ->
+          {:error, razon} # Error propagado desde la consulta de disponibilidad
       end
     end
   end

@@ -1,5 +1,5 @@
 defmodule AzarSa.LoggerTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: false
   alias AzarSa.Logger
 
   @ruta_prueba "data/bitacora_test.txt"
@@ -24,14 +24,10 @@ defmodule AzarSa.LoggerTest do
   end
 
   test "registrar_log retorna un error controlado si la ruta es inválida" do
-    #Se forza al error intentando guardar en una carpeta que no existe
-    ruta_imposible = "carpeta_xyz/bitacora_fallida.txt"
+      ruta_invalida = "/root/archivo_prohibido.txt"
 
-    #Se ejecuta la función con datos de prueba
-    resultado = Logger.registrar_log("Prueba de error", "Denegado", ruta_imposible)
+      resultado = AzarSa.Logger.registrar_log("Prueba", "Error", ruta_invalida)
 
-    #Se valida que el sistema devuelva exactamente la tupla de error esperada
-    # :enoent significa "Error no entry" (No existe el archivo o directorio)
-    assert resultado == {:error, :enoent}
-  end
+      assert resultado == {:error, :eacces} or resultado == {:error, :enoent}
+    end
 end

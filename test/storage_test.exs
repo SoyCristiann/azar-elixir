@@ -1,5 +1,5 @@
 defmodule AzarSa.StorageTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: false
   alias AzarSa.Storage
 
   @ruta_prueba "data/test_temp.json"

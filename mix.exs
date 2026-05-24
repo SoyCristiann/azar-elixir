@@ -20,7 +20,7 @@ defmodule AzarElixir.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {AzarElixir.Application, []},
+      mod: {AzarSa.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

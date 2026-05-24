@@ -9,10 +9,24 @@ defmodule AzarSa.TransaccionesTest do
 
   setup do
     #Se prepara los Sorteos Dummy
-    sorteos = [
-      %{"id" => "S-001", "nombre" => "Sorteo Activo", "estado" => "activo"},
-      %{"id" => "S-002", "nombre" => "Sorteo Jugado", "estado" => "jugado"}
-    ]
+    sorteos = %{
+      "sorteos" => [
+        %{
+          "id" => "S-001",
+          "nombre" => "Sorteo Activo",
+          "estado" => "activo",
+          "total_billetes" => 200,
+          "num_fracciones" => 10
+        },
+        %{
+          "id" => "S-002",
+          "nombre" => "Sorteo Jugado",
+          "estado" => "jugado",
+          "total_billetes" => 200,
+          "num_fracciones" => 10
+        }
+      ]
+    }
     Storage.guardar_json(@prueba_sorteos, sorteos)
 
     #Se prepara también un usuario Dummy

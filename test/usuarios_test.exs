@@ -10,10 +10,10 @@ defmodule AzarSa.UsuariosTest do
     # 1. Se crea un archivo nuevo y limpio específico para el test.
     Storage.guardar_json(@prueba_usuarios, %{"usuarios" => []})
 
-    # 2. Se asegura su eliminación total al finalizar, sin tocar el archivo real de la app.
-    #on_exit(fn ->
-     # File.rm(@prueba_usuarios)
-    #end)
+     #2. Se asegura su eliminación total al finalizar, sin tocar el archivo real de la app.
+    on_exit(fn ->
+      File.rm(@prueba_usuarios)
+    end)
 
     :ok
   end

@@ -1,33 +1,13 @@
-defmodule AzarElixir.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
-  @moduledoc false
-
+defmodule AzarSa.Application do
   use Application
 
-  @impl true
   def start(_type, _args) do
     children = [
-      AzarElixirWeb.Telemetry,
-      {DNSCluster, query: Application.get_env(:azar_elixir, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: AzarElixir.PubSub},
-      # Start a worker by calling: AzarElixir.Worker.start_link(arg)
-      # {AzarElixir.Worker, arg},
-      # Start to serve requests, typically the last entry
-      AzarElixirWeb.Endpoint
+      AzarElixirWeb.Endpoint,
+      AzarSa.TransaccionesServer
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: AzarElixir.Supervisor]
+    opts = [strategy: :one_for_one, name: AzarSa.Supervisor]
     Supervisor.start_link(children, opts)
-  end
-
-  # Tell Phoenix to update the endpoint configuration
-  # whenever the application is updated.
-  @impl true
-  def config_change(changed, _new, removed) do
-    AzarElixirWeb.Endpoint.config_change(changed, removed)
-    :ok
   end
 end

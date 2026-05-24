@@ -1,5 +1,5 @@
 defmodule AzarSa.AdminSorteosTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: false
 
   alias AzarSa.AdminSorteos
   alias AzarSa.Storage
@@ -9,8 +9,8 @@ defmodule AzarSa.AdminSorteosTest do
 
   describe "crear_sorteo/2" do
     test "Crear un sorteo exitosamente si el ID es nuevo" do
-      # Se crea un archivo nuevo y limpio.
-      Storage.guardar_json(@prueba_sorteos, [])
+      # Se crea un archivo nuevo y limpio con la estructura de mapa correcta.
+      Storage.guardar_json(@prueba_sorteos, %{"sorteos" => []})
 
       # Creación del nuevo sorteo
       nuevo_sorteo = %{"id" => "S-001", "nombre" => "Sorteo Extra", "premios" => []}
@@ -28,8 +28,8 @@ defmodule AzarSa.AdminSorteosTest do
     end
 
     test "Falla y devuelve error si el ID ya existe" do
-      # Se crea un archivo nuevo y limpio.
-      Storage.guardar_json(@prueba_sorteos, [])
+      # Se crea un archivo nuevo y limpio con la estructura de mapa correcta.
+      Storage.guardar_json(@prueba_sorteos, %{"sorteos" => []})
 
       # Creación del nuevo sorteo
       nuevo_sorteo = %{"id" => "S-001", "nombre" => "Sorteo Extra", "premios" => []}
@@ -50,14 +50,16 @@ defmodule AzarSa.AdminSorteosTest do
 
   describe "eliminar_sorteo/2" do
     test "Elimina el sorteo exitosamente si no tiene premios asociados" do
-      # Se crea un archivo nuevo y limpio.
-      Storage.guardar_json(@prueba_sorteos, [])
+      # Se crea un archivo nuevo y limpio con la estructura de mapa correcta.
+      Storage.guardar_json(@prueba_sorteos, %{"sorteos" => []})
+
       # Creación del nuevo sorteo
       nuevo_sorteo = %{"id" => "S-001", "nombre" => "Sorteo Extra", "premios" => []}
+
       # Se agrega el sorteo que se acaba de crear.
       AdminSorteos.crear_sorteo(nuevo_sorteo, @prueba_sorteos)
 
-      # Se eliminar el sorteo creado previamente
+      # Se elimina el sorteo creado previamente
       assert {:ok, "Sorteo eliminado exitosamente"} ==
                AdminSorteos.eliminar_sorteo("S-001", @prueba_sorteos)
 
@@ -69,8 +71,8 @@ defmodule AzarSa.AdminSorteosTest do
     end
 
     test "Falla y devuelve un error si intenta eliminar un sorteo que ya tiene premios" do
-      # Se crea un archivo nuevo y limpio.
-      Storage.guardar_json(@prueba_sorteos, [])
+      # Se crea un archivo nuevo y limpio con la estructura de mapa correcta.
+      Storage.guardar_json(@prueba_sorteos, %{"sorteos" => []})
 
       sorteo_con_premios = %{
         "id" => "S-001",
@@ -79,6 +81,7 @@ defmodule AzarSa.AdminSorteosTest do
       }
 
       AdminSorteos.crear_sorteo(sorteo_con_premios, @prueba_sorteos)
+
       # Verifica que al intentar eliminar el sorteo, responda con la tupla correcta.
       assert {:error, "No se puedse eliminar el sorteo porque ya tiene premios asociados"} ==
                AdminSorteos.eliminar_sorteo("S-001", @prueba_sorteos)
@@ -89,24 +92,26 @@ defmodule AzarSa.AdminSorteosTest do
   end
 
   describe "Funciones de análisis financiero y clientes/4" do
-    # Se crea el bloque setup que se ejecutará antes de cada pruieba de este bloque, esto con el fin de crear el archivo dummy necesario.
+    # Se crea el bloque setup que se ejecutará antes de cada prueba de este bloque.
     setup do
-      # Se prepara el archivo dummy de los sorteos.
-      sorteos = [
-        %{
-          "id" => "S-001",
-          "premios" => [
-            # Total de premios: $70.000
-            %{"valor" => 50_000},
-            %{"valor" => 20_000}
-          ]
-        }
-      ]
+      # Se prepara el archivo dummy de los sorteos, asegurando la estructura de mapa.
+      sorteos = %{
+        "sorteos" => [
+          %{
+            "id" => "S-001",
+            "premios" => [
+              # Total de premios: $70.000
+              %{"valor" => 50_000},
+              %{"valor" => 20_000}
+            ]
+          }
+        ]
+      }
 
       # Se guarda en un nuevo archivo dummy el sorteo previamente creado.
       Storage.guardar_json(@prueba_sorteos, sorteos)
 
-      # Se prepara un archivo de usuairos Dummy
+      # Se prepara un archivo de usuarios Dummy
       usuarios = %{
         "usuarios" => [
           %{
@@ -150,19 +155,20 @@ defmodule AzarSa.AdminSorteosTest do
       # La suma total para el sorteo "S-002" es 45.000
       assert AdminSorteos.consultar_ingresos("S-002", @prueba_usuarios) == 45_000
       # Prueba con un sorteo que no tiene compras
-      assert AdminSorteos.consultar_ingresos("S-000", @prueba_usuarios)
+      assert AdminSorteos.consultar_ingresos("S-000", @prueba_usuarios) == 0
     end
 
-    test "listar_clientes_por_sorteo devuelve solo los nombres de los compradores correctos" do
-      # Se obtiene la lista de clientes, en este caso para el sorteo "S-001".
-      clientes_sorteo1 = AdminSorteos.listar_clientes_por_sorteo("S-001", @prueba_usuarios)
+    test "listar_clientes_por_sorteo agrupa a los clientes por tipo de billete" do
+      clientes_agrupados = AdminSorteos.listar_clientes_por_sorteo("S-001", @prueba_usuarios)
 
-      assert length(clientes_sorteo1) == 2
-      assert Enum.member?(clientes_sorteo1, "Pedro")
-      assert Enum.member?(clientes_sorteo1, "Pablo")
+      # Verifica la estructura de mapa
+      assert length(clientes_agrupados.completos) == 2
+      assert Enum.member?(clientes_agrupados.completos, "Pedro")
+      assert Enum.member?(clientes_agrupados.completos, "Pablo")
 
-      # Carmen no hace parte del sorteo "S-001", por lo que se usa 'refute' esperando obtener false.
-      refute Enum.member?(clientes_sorteo1, "Carmen")
+      # Carmen compró en el S-002, no debe aparecer en completos ni fracciones del S-001
+      refute Enum.member?(clientes_agrupados.completos, "Carmen")
+      refute Enum.member?(clientes_agrupados.fracciones, "Carmen")
     end
 
     test "balance_sorteo calcula la rentabilidad cruzando datos de ambos archivos" do
@@ -182,17 +188,18 @@ defmodule AzarSa.AdminSorteosTest do
     end
   end
 
-
   describe "Gestión de premios Admin/3" do
     setup do
-      # Se crea el sorteo S-001 con un premio inicial
-      sorteos = [
-        %{
-          "id" => "S-001",
-          "nombre" => "Sorteo Test",
-          "premios" => [%{"nombre" => "Premio Base", "valor" => 10_000}]
-        }
-      ]
+      # Se crea el sorteo S-001 con un premio inicial, asegurando la estructura de mapa.
+      sorteos = %{
+        "sorteos" => [
+          %{
+            "id" => "S-001",
+            "nombre" => "Sorteo Test",
+            "premios" => [%{"nombre" => "Premio Base", "valor" => 10_000}]
+          }
+        ]
+      }
       Storage.guardar_json(@prueba_sorteos, sorteos)
 
       # 2. Escenario de Usuarios: Sin compras inicialmente
@@ -207,27 +214,27 @@ defmodule AzarSa.AdminSorteosTest do
     end
 
     test "agregar_premio inserta un nuevo premio en el sorteo correcto" do
-      nuevo_premio= %{"nombre" => "Premio Mayor", "valor" => 500_000}
+      nuevo_premio = %{"nombre" => "Premio Mayor", "valor" => 500_000}
       AdminSorteos.agregar_premio("S-001", nuevo_premio, @prueba_sorteos)
 
-      premios= AdminSorteos.listar_premios("S-001", @prueba_sorteos)
+      premios = AdminSorteos.listar_premios("S-001", @prueba_sorteos)
       # Se verifica que el nuevo premio se haya agregado correctamente al sorteo S-001.
-      assert Enum.any?(premios, fn p-> p["nombre"] == "Premio Mayor" and p["valor"] == 500_000 end)
+      assert Enum.any?(premios, fn p -> p["nombre"] == "Premio Mayor" and p["valor"] == 500_000 end)
     end
 
+    test "eliminar_premio elimina el premio si no hay clientes asociados al sorteo" do
+      # Se intenta eliminar el premio base de un sorteo sin ventas.
+      assert {:ok, "Premio eliminado exitosamente"} ==
+               AdminSorteos.eliminar_premio("S-001", "Premio Base", @prueba_sorteos, @prueba_usuarios)
 
-    test "eliminar_premio eliminar el premio si no hay clientes asociados al sorteo" do
-      #Se intenta eliminar el premio base de un sorteo sin ventas.
-      assert {:ok, "Premio eliminado exitosamente"} == AdminSorteos.eliminar_premio("S-001", "Premio Base", @prueba_sorteos, @prueba_usuarios)
-
-      #Lista los premios
-      premios= AdminSorteos.listar_premios("S-001", @prueba_sorteos)
-      #A través del refute, esperando un false como respuesta, se verifica que el premio ya no esté en la lista de premios del sorteo S-001.
+      # Lista los premios
+      premios = AdminSorteos.listar_premios("S-001", @prueba_sorteos)
+      # A través del refute, esperando un false como respuesta, se verifica que el premio ya no esté.
       refute Enum.any?(premios, fn p -> p["nombre"] == "Premio Base" end)
     end
 
-    test "eliminar_premio no eliminar el premio si hay clientes asociados al sorteo" do
-      #Primero se crea y guarda un usuario con compra para el sorteo S-001.
+    test "eliminar_premio no elimina el premio si hay clientes asociados al sorteo" do
+      # Primero se crea y guarda un usuario con compra para el sorteo S-001.
       usuarios_con_venta = %{
         "usuarios" => [
           %{"nombre" => "Juan", "compras" => [%{"id_sorteo" => "S-001", "valor_pagado" => 5_000}]}
@@ -235,12 +242,95 @@ defmodule AzarSa.AdminSorteosTest do
       }
       Storage.guardar_json(@prueba_usuarios, usuarios_con_venta)
 
-      #Se intenta eliminar el premio.
-      assert{{:error, "No se puede eliminar el premio porque hay clientes participando en el sorteo"} == AdminSorteos.eliminar_premio("S-001", "Premio Base", @prueba_sorteos, @prueba_usuarios)}
+      # Se intenta eliminar el premio.
+      assert {:error, "No se puede eliminar el premio porque hay clientes participando en el sorteo"} ==
+               AdminSorteos.eliminar_premio("S-001", "Premio Base", @prueba_sorteos, @prueba_usuarios)
 
-      #Se verifica que el premio siga en la lista de premios del sorteo S-001
-      premios= AdminSorteos.listar_premios("S-001", @prueba_sorteos)
+      # Se verifica que el premio siga en la lista de premios del sorteo S-001
+      premios = AdminSorteos.listar_premios("S-001", @prueba_sorteos)
       assert Enum.any?(premios, fn p -> p["nombre"] == "Premio Base" end)
+    end
+  end
+
+  describe "actualizar_fecha_sistema/3" do
+    setup do
+      sorteos = %{
+        "sorteos" => [
+          %{
+            "id" => "S-001",
+            "nombre" => "Sorteo Vencido",
+            "fecha" => "2026-05-20",
+            "estado" => "pendiente",
+            "total_billetes" => 1,
+            "premios" => [%{"nombre" => "Premio Mayor", "valor" => 500_000}],
+            "ganadores" => []
+          },
+          %{
+            "id" => "S-002",
+            "nombre" => "Sorteo Futuro",
+            "fecha" => "2026-06-01",
+            "estado" => "pendiente",
+            "total_billetes" => 50,
+            "premios" => [%{"nombre" => "Seco", "valor" => 100_000}],
+            "ganadores" => []
+          }
+        ]
+      }
+
+      usuarios = %{
+        "usuarios" => [
+          %{
+            "documento" => "123",
+            "nombre" => "Jugador 1",
+            "compras" => [
+              %{"id_sorteo" => "S-001", "numero_billete" => 1, "tipo" => "completo", "valor_pagado" => 50_000} # <-- Compró el boleto 1
+            ],
+            "premios_ganados" => [],
+            "notificaciones" => []
+          }
+        ]
+      }
+
+      Storage.guardar_json(@prueba_sorteos, sorteos)
+      Storage.guardar_json(@prueba_usuarios, usuarios)
+
+      on_exit(fn ->
+        File.rm(@prueba_sorteos)
+        File.rm(@prueba_usuarios)
+      end)
+
+      :ok
+    end
+
+    test "ejecuta sorteos pendientes si la fecha del sistema es igual o mayor a la fecha programada" do
+      # Simulamos que hoy es 22 de Mayo. El S-001 (del 20 de mayo) debe ejecutarse. El S-002 no.
+      assert {:ok, mensaje} = AdminSorteos.actualizar_fecha_sistema("2026-05-22", @prueba_sorteos, @prueba_usuarios)
+      assert mensaje =~ "se ejecutaron 1 sorteo(s)"
+
+      # Verificamos los cambios en el archivo de sorteos
+      data_sorteos = Storage.leer_json(@prueba_sorteos)
+      sorteo_jugado = Enum.find(data_sorteos["sorteos"], fn s -> s["id"] == "S-001" end)
+      sorteo_futuro = Enum.find(data_sorteos["sorteos"], fn s -> s["id"] == "S-002" end)
+
+      # El estado debe haber cambiado
+      assert sorteo_jugado["estado"] == "jugado"
+      # Como tiene 1 premio, debe haber generado 1 ganador
+      assert length(sorteo_jugado["ganadores"]) == 1
+
+      # El sorteo futuro debe seguir intacto
+      assert sorteo_futuro["estado"] == "pendiente"
+    end
+
+    test "devuelve mensaje indicando que no hay sorteos si la fecha es muy antigua" do
+      # Simulamos una fecha donde aún no hay ningún sorteo vencido
+      assert {:ok, mensaje} = AdminSorteos.actualizar_fecha_sistema("2026-05-10", @prueba_sorteos, @prueba_usuarios)
+      assert mensaje =~ "No se encontraron sorteos programados"
+    end
+
+    test "falla y devuelve error si el formato de fecha es incorrecto" do
+      # Probamos un formato no ISO (DD-MM-AAAA en lugar de AAAA-MM-DD)
+      assert {:error, "Formato de fecha inválido. Debe utilizar el formato AAAA-MM-DD (Ej: 2026-05-22)."} ==
+               AdminSorteos.actualizar_fecha_sistema("22-05-2026", @prueba_sorteos, @prueba_usuarios)
     end
   end
 end

@@ -1,5 +1,5 @@
 defmodule AzarSa.SupervisorSorteosTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: false
   alias AzarSa.SupervisorSorteos
   #alias AzarSa.ServidorSorteo
 

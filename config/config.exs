@@ -10,6 +10,12 @@ import Config
 config :azar_elixir,
   generators: [timestamp_type: :utc_datetime]
 
+#Distribución de Nodos. Aquí se definen la lista de servidores del sistema.
+config :azar_elixir, :router,
+  nodos: [
+    :"servidor1@cristian-B450-AORUS-PRO-WIFI"
+  ]
+
 # Configure the endpoint
 config :azar_elixir, AzarElixirWeb.Endpoint,
   url: [host: "localhost"],

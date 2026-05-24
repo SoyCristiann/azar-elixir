@@ -120,3 +120,148 @@
 22/05/2026 21:11:29 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
 22/05/2026 21:11:29 - Solicitud: Login [777] - Resultado: OK
 22/05/2026 21:11:29 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 22:17:39 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-001 no disponible
+22/05/2026 22:19:51 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo sorteo-001 no disponible
+22/05/2026 22:20:39 - Solicitud: Compra [12345] - Resultado: NEGADO - Usuario no existe
+22/05/2026 22:22:39 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: sorteo_001 | Num: 10 | Tipo: completo
+22/05/2026 23:02:58 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:02:58 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 23:02:58 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:02:58 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 23:02:58 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:02:58 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 23:02:58 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:07:05 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+22/05/2026 23:07:05 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+22/05/2026 23:07:05 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+22/05/2026 23:07:05 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:07:05 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 23:07:05 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:07:05 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:07:05 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 23:07:05 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:07:05 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 23:47:24 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:47:24 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:47:24 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 23:47:24 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:47:24 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 23:47:24 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:47:24 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 23:47:24 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+22/05/2026 23:47:24 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+22/05/2026 23:47:24 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+22/05/2026 23:53:24 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+22/05/2026 23:53:24 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+22/05/2026 23:53:24 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+22/05/2026 23:53:24 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:53:24 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 23:53:24 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:53:24 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:53:24 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 23:53:24 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:53:24 - Solicitud: Login [777] - Resultado: OK
+22/05/2026 23:58:47 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+22/05/2026 23:58:47 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+22/05/2026 23:58:47 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+22/05/2026 23:58:47 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:58:47 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:58:47 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+22/05/2026 23:58:47 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:58:47 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+22/05/2026 23:58:47 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+22/05/2026 23:58:47 - Solicitud: Login [777] - Resultado: OK
+23/05/2026 00:01:08 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+23/05/2026 00:01:08 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+23/05/2026 00:01:08 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+23/05/2026 00:01:08 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+23/05/2026 00:01:08 - Solicitud: Login [777] - Resultado: OK
+23/05/2026 00:01:08 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+23/05/2026 00:01:08 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+23/05/2026 00:01:08 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+23/05/2026 00:01:08 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+23/05/2026 00:01:08 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+23/05/2026 00:07:45 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+23/05/2026 00:07:45 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+23/05/2026 00:07:45 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+23/05/2026 00:07:45 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+23/05/2026 00:07:45 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+23/05/2026 00:07:45 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+23/05/2026 00:07:45 - Solicitud: Login [777] - Resultado: OK
+23/05/2026 00:07:45 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+23/05/2026 00:07:45 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+23/05/2026 00:07:45 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+23/05/2026 22:26:58 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+23/05/2026 22:26:58 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+23/05/2026 22:26:58 - Solicitud: Login [777] - Resultado: OK
+23/05/2026 22:26:58 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+23/05/2026 22:26:58 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+23/05/2026 22:26:58 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+23/05/2026 22:26:58 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+23/05/2026 22:26:58 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+23/05/2026 22:26:58 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+23/05/2026 22:26:58 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+23/05/2026 22:46:28 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+23/05/2026 22:46:28 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+23/05/2026 22:46:28 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+23/05/2026 22:46:28 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+23/05/2026 22:46:28 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+23/05/2026 22:46:28 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+23/05/2026 22:46:28 - Solicitud: Login [777] - Resultado: OK
+23/05/2026 22:46:28 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+23/05/2026 22:46:28 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+23/05/2026 22:46:28 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+23/05/2026 22:46:28 - Solicitud: Devolución [123] - Resultado: OK - Sorteo: S-001 | Num: 2
+23/05/2026 23:00:06 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+23/05/2026 23:00:06 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+23/05/2026 23:00:06 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+23/05/2026 23:00:06 - Solicitud: Devolución [123] - Resultado: OK - Sorteo: S-001 | Num: 2
+23/05/2026 23:00:06 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:00:06 - Solicitud: Login [777] - Resultado: OK
+23/05/2026 23:00:06 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:00:06 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+23/05/2026 23:00:06 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:00:06 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+23/05/2026 23:00:06 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:07:18 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:07:18 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:07:18 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+23/05/2026 23:07:18 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:07:18 - Solicitud: Login [777] - Resultado: OK
+23/05/2026 23:07:18 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:07:18 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+23/05/2026 23:07:18 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+23/05/2026 23:07:19 - Solicitud: Devolución [123] - Resultado: OK - Sorteo: S-001 | Num: 2
+23/05/2026 23:10:37 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:10:37 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+23/05/2026 23:10:37 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:10:37 - Solicitud: Login [777] - Resultado: OK
+23/05/2026 23:10:37 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:10:37 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+23/05/2026 23:10:37 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:10:38 - Solicitud: Devolución [123] - Resultado: OK - Sorteo: S-001 | Num: 2
+23/05/2026 23:10:38 - Solicitud: Compra [12345] - Resultado: NEGADO - Billete 88 (completo) agotado
+23/05/2026 23:10:38 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+23/05/2026 23:10:38 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+23/05/2026 23:12:48 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:12:48 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+23/05/2026 23:12:48 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:12:48 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:12:48 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+23/05/2026 23:12:48 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:12:48 - Solicitud: Login [777] - Resultado: OK
+23/05/2026 23:12:48 - Solicitud: Devolución [123] - Resultado: OK - Sorteo: S-001 | Num: 2
+23/05/2026 23:12:48 - Solicitud: Compra [12345] - Resultado: NEGADO - Billete 88 (completo) agotado
+23/05/2026 23:12:48 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
+23/05/2026 23:12:48 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+23/05/2026 23:15:16 - Solicitud: Devolución [123] - Resultado: OK - Sorteo: S-001 | Num: 2
+23/05/2026 23:15:16 - Solicitud: Registro Usuario [9999] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:15:16 - Solicitud: Registro Usuario [9999] - Resultado: NEGADO - Documento duplicado
+23/05/2026 23:15:16 - Solicitud: Registro Usuario [777] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:15:16 - Solicitud: Login [777] - Resultado: OK
+23/05/2026 23:15:16 - Solicitud: Registro Usuario [888] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:15:16 - Solicitud: Login [888] - Resultado: NEGADO - Credenciales inválidas
+23/05/2026 23:15:16 - Solicitud: Registro Usuario [12345] - Resultado: OK - Registrado exitosamente
+23/05/2026 23:15:16 - Solicitud: Compra [12345] - Resultado: OK - Sorteo: S-001 | Num: 88 | Tipo: completo
+23/05/2026 23:15:16 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
+23/05/2026 23:15:16 - Solicitud: Compra [999] - Resultado: NEGADO - Usuario no existe
