@@ -1,6 +1,17 @@
 {
   "sorteos": [
     {
+      "estado": "pendiente",
+      "fecha": "2026-12-25",
+      "ganadores": [],
+      "id": "sorteo_1779669310567",
+      "nombre": "Sorteo iphone",
+      "num_fracciones": 1,
+      "premios": [],
+      "total_billetes": 10,
+      "valor_billete": 10000
+    },
+    {
       "estado": "jugado",
       "fecha": "2026-12-12",
       "ganadores": [
@@ -15,8 +26,8 @@
       "num_fracciones": 8,
       "numeros_ganadores": [
         {
-          "premio": "Premio mayor",
-          "numero": 36
+          "numero": 36,
+          "premio": "Premio mayor"
         }
       ],
       "premios": [
@@ -213,8 +224,8 @@
       "num_fracciones": 4,
       "numeros_ganadores": [
         {
-          "premio": "Premio Mayor",
-          "numero": 7
+          "numero": 7,
+          "premio": "Premio Mayor"
         }
       ],
       "premios": [
@@ -241,8 +252,8 @@
       "num_fracciones": 2,
       "numeros_ganadores": [
         {
-          "premio": "Gran Premio",
-          "numero": 12
+          "numero": 12,
+          "premio": "Gran Premio"
         }
       ],
       "premios": [
@@ -269,8 +280,8 @@
       "num_fracciones": 1,
       "numeros_ganadores": [
         {
-          "premio": "Premio Único",
-          "numero": 88
+          "numero": 88,
+          "premio": "Premio Único"
         }
       ],
       "premios": [
@@ -297,8 +308,8 @@
       "num_fracciones": 1,
       "numeros_ganadores": [
         {
-          "premio": "Premio Amanecer",
-          "numero": 1
+          "numero": 1,
+          "premio": "Premio Amanecer"
         }
       ],
       "premios": [
@@ -325,8 +336,8 @@
       "num_fracciones": 5,
       "numeros_ganadores": [
         {
-          "premio": "Millonario",
-          "numero": 5
+          "numero": 5,
+          "premio": "Millonario"
         }
       ],
       "premios": [
@@ -353,8 +364,8 @@
       "num_fracciones": 4,
       "numeros_ganadores": [
         {
-          "premio": "Premio Llama",
-          "numero": 77
+          "numero": 77,
+          "premio": "Premio Llama"
         }
       ],
       "premios": [
@@ -381,8 +392,8 @@
       "num_fracciones": 4,
       "numeros_ganadores": [
         {
-          "premio": "Premio Pico",
-          "numero": 42
+          "numero": 42,
+          "premio": "Premio Pico"
         }
       ],
       "premios": [
@@ -409,8 +420,8 @@
       "num_fracciones": 3,
       "numeros_ganadores": [
         {
-          "premio": "Premio Raiz",
-          "numero": 33
+          "numero": 33,
+          "premio": "Premio Raiz"
         }
       ],
       "premios": [
@@ -437,8 +448,8 @@
       "num_fracciones": 2,
       "numeros_ganadores": [
         {
-          "premio": "Premio Polar",
-          "numero": 22
+          "numero": 22,
+          "premio": "Premio Polar"
         }
       ],
       "premios": [
@@ -465,8 +476,8 @@
       "num_fracciones": 1,
       "numeros_ganadores": [
         {
-          "premio": "Premio Arena",
-          "numero": 10
+          "numero": 10,
+          "premio": "Premio Arena"
         }
       ],
       "premios": [

@@ -13,7 +13,8 @@ config :azar_elixir,
 #Distribución de Nodos. Aquí se definen la lista de servidores del sistema.
 config :azar_elixir, :router,
   nodos: [
-    :"servidor1@cristian-B450-AORUS-PRO-WIFI"
+    :"servidor1@100.98.133.9", # (PC Linux)
+    :"servidor2@100.106.110.108" # (PC Windows)
   ]
 
 # Configure the endpoint
