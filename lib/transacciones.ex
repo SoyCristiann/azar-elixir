@@ -1,4 +1,6 @@
 defmodule AzarSa.Transacciones do
+  require Logger
+
   @ruta_usuarios "data/usuarios.json"
   @ruta_sorteos "data/sorteos.json"
 
@@ -25,6 +27,7 @@ end
   Valida que el sorteo esté disponible y que el número tenga inventario.
   """
   def comprar_billete(documento, id_sorteo, numero, tipo, valor_pagado, ruta_usuarios \\ @ruta_usuarios, ruta_sorteos \\ @ruta_sorteos) do
+    Logger.info("📝 [LÓGICA DEL SORTEO] Procesando compra para el sorteo #{id_sorteo}. Gestionando información en los archivos JSON: #{ruta_usuarios} y #{ruta_sorteos}")
     #Validar que el sorteo esté disponible para la venta
     sorteos_activos = consultar_sorteos_disponibles(ruta_sorteos)
     sorteo_valido? = Enum.any?(sorteos_activos, fn s -> s["id"] == id_sorteo end)

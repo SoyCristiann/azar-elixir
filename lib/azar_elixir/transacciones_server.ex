@@ -1,6 +1,11 @@
 defmodule AzarSa.TransaccionesServer do
   use GenServer
 
+  #El sistema procesa solicitudes provenientes de la red.
+  #Redirige esas solicitudes basándose en el sorteo correspondiente (id_sorteo).
+
+  require Logger
+
   # Inicia el proceso y lo registra con el nombre del módulo (AzarSa.TransaccionesServer) para que se pueda llamar desde cualquier parte sin saber el PID.
   def start_link(_opts) do
     GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
@@ -22,7 +27,10 @@ defmodule AzarSa.TransaccionesServer do
 
   @impl true
   def handle_call({:comprar, documento, id_sorteo, numero, tipo, valor}, _from, state) do
-    # Aquí es donde ocurre la "magia". Recibimos el mensaje y ejecutamos la lógica.
+    #Demuestra la recepción desde la red y la redirección
+    Logger.info("🌐 [NODO RED: #{Node.self()}] Solicitud de compra recibida. Redirigiendo hacia el sorteo: #{id_sorteo}...")
+
+    #Recibimos el mensaje y ejecutamos la lógica.
     # El resultado se envía de vuelta al cliente.
     resultado = AzarSa.Transacciones.comprar_billete(documento, id_sorteo, numero, tipo, valor)
 
