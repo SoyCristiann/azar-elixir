@@ -3,8 +3,10 @@ defmodule AzarSa.Application do
 
   def start(_type, _args) do
     children = [
+      {Phoenix.PubSub, name: AzarElixir.PubSub},
       AzarElixirWeb.Endpoint,
-      AzarSa.TransaccionesServer
+      {Registry, keys: :unique, name: AzarSa.SorteosRegistry},
+      {DynamicSupervisor, strategy: :one_for_one, name: AzarSa.SorteosSupervisor}
     ]
 
     opts = [strategy: :one_for_one, name: AzarSa.Supervisor]

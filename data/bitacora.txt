@@ -140,3 +140,13 @@
 24/05/2026 18:25:00 - Solicitud: Compra [12345] - Resultado: NEGADO - Sorteo S-002 no disponible
 24/05/2026 18:25:00 - Solicitud: Devolución [123] - Resultado: OK - Sorteo: S-001 | Num: 2
 24/05/2026 19:36:14 - Solicitud: Login [1030629721] - Resultado: OK
+24/05/2026 21:21:54 - Solicitud: Login [1030629721] - Resultado: OK
+24/05/2026 21:22:12 - Solicitud: Compra [1030629721] - Resultado: OK - Sorteo: sorteo_1779669310567 | Num: 1 | Tipo: completo
+24/05/2026 21:32:59 - Solicitud: Login [1030629721] - Resultado: OK
+24/05/2026 21:33:05 - Solicitud: Devolución [1030629721] - Resultado: OK - Sorteo: sorteo_1779669310567 | Num: 1
+24/05/2026 21:33:19 - Solicitud: Compra [1030629721] - Resultado: OK - Sorteo: sorteo_1779669310567 | Num: 1 | Tipo: fraccion
+24/05/2026 22:16:07 - Solicitud: Login [1030629721] - Resultado: OK
+24/05/2026 22:16:23 - Solicitud: Devolución [1030629721] - Resultado: OK - Sorteo: sorteo_1779669310567 | Num: 1
+24/05/2026 22:16:33 - Solicitud: Compra [1030629721] - Resultado: OK - Sorteo: sorteo_1779669310567 | Num: 1 | Tipo: completo
+24/05/2026 22:17:22 - Solicitud: Compra [1030629721] - Resultado: OK - Sorteo: sorteo_1779669310567 | Num: 2 | Tipo: fraccion
+24/05/2026 22:17:50 - Solicitud: Compra [1030629721] - Resultado: OK - Sorteo: sorteo_014 | Num: 1 | Tipo: fraccion

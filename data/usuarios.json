@@ -339,6 +339,24 @@
           "numero_billete": 2,
           "tipo": "fraccion",
           "valor_pagado": 5000
+        },
+        {
+          "id_sorteo": "sorteo_1779669310567",
+          "numero_billete": 1,
+          "tipo": "completo",
+          "valor_pagado": 20000
+        },
+        {
+          "id_sorteo": "sorteo_1779669310567",
+          "numero_billete": 2,
+          "tipo": "fraccion",
+          "valor_pagado": 5000
+        },
+        {
+          "id_sorteo": "sorteo_014",
+          "numero_billete": 1,
+          "tipo": "fraccion",
+          "valor_pagado": 5000
         }
       ],
       "documento": "1030629721",

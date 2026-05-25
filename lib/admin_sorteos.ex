@@ -82,7 +82,11 @@ defmodule AzarSa.AdminSorteos do
       sorteos_actualizados = [nuevo_sorteo | sorteos_actuales]
 
       case Storage.guardar_json(ruta, %{"sorteos" => sorteos_actualizados}) do
-        :ok -> {:ok, "Sorteo creado exitosamente"}
+        :ok ->
+          #Nace un proceso concurrente para este sorteo ---
+          DynamicSupervisor.start_child(AzarSa.SorteosSupervisor, {AzarSa.SorteoServer, nuevo_sorteo["id"]})
+
+          {:ok, "Sorteo creado exitosamente"}
         error -> error
       end
     end

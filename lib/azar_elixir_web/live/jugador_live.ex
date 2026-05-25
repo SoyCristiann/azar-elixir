@@ -1,5 +1,7 @@
 defmodule AzarElixirWeb.JugadorLive do
   use AzarElixirWeb, :live_view
+
+  # Ajuste: Quitamos TransaccionesServer
   alias AzarSa.{Transacciones, Jugador, Usuarios, Storage}
 
   def mount(_params, _session, socket) do
@@ -25,7 +27,6 @@ defmodule AzarElixirWeb.JugadorLive do
     end
   end
 
-  # Función para definir el color según la disponibilidad
   defp obtener_color_css(numero, id_sorteo, sorteo, compras_totales) do
     estado = calcular_estado_numero(numero, id_sorteo, sorteo, compras_totales)
     cond do
@@ -78,7 +79,8 @@ defmodule AzarElixirWeb.JugadorLive do
     {numero_int, _} = Integer.parse(num)
     valor = if tipo == "completo", do: 20000, else: 5000
 
-    case Transacciones.comprar_billete(doc, id, numero_int, tipo, valor) do
+    #Llamamos a SorteoServer pasándole el 'id' primero
+    case AzarSa.SorteoServer.comprar(id, doc, numero_int, tipo, valor) do
       {:ok, _} -> {:noreply, socket |> put_flash(:info, "Transacción aprobada.") |> cargar_datos_jugador(doc)}
       {:error, msg} -> {:noreply, put_flash(socket, :error, msg)}
     end
